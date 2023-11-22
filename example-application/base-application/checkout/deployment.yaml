@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: checkout
+  namespace: checkout
   labels:
     app.kubernetes.io/name: checkout
     app.kubernetes.io/type: app

@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: rabbitmq
-  namespace: "rabbitmq"
+  namespace: rabbitmq
   labels:
     app.kubernetes.io/name: rabbitmq
     app.kubernetes.io/instance: rabbitmq

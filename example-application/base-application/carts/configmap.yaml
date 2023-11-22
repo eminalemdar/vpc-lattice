@@ -3,6 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: carts
+  namespace: carts
 data:
   CARTS_DYNAMODB_TABLENAME: Items
   CARTS_DYNAMODB_CREATETABLE: "true"

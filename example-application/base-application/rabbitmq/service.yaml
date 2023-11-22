@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: rabbitmq-headless
-  namespace: "rabbitmq"
+  namespace: rabbitmq
   labels:
     app.kubernetes.io/name: rabbitmq
     app.kubernetes.io/instance: rabbitmq
@@ -31,7 +31,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: rabbitmq
-  namespace: "rabbitmq"
+  namespace: rabbitmq
   labels:
     app.kubernetes.io/name: rabbitmq
     app.kubernetes.io/instance: rabbitmq

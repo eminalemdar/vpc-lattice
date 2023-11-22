@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: carts
+  namespace: carts
   labels:
     app.kubernetes.io/name: cart
     app.kubernetes.io/type: app

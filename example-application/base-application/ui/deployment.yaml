@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ui
+  namespace: ui
   labels:
     app.kubernetes.io/type: app
 spec:

@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: orders-mysql
+  namespace: orders
   labels:
     app.kubernetes.io/name: orders
     app.kubernetes.io/team: database

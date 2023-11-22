@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: catalog-mysql
+  namespace: catalog
   labels:
     app.kubernetes.io/name: catalog
     app.kubernetes.io/team: database

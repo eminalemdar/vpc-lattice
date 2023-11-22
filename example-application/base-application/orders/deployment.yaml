@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: orders
+  namespace: orders
   labels:
     app.kubernetes.io/name: orders
     app.kubernetes.io/type: app
