@@ -145,7 +145,15 @@ resource "aws_iam_policy" "lattice" {
                 "vpc-lattice:*",
                 "iam:CreateServiceLinkedRole",
                 "ec2:DescribeVpcs",
-                "ec2:DescribeSubnets"
+                "ec2:DescribeSubnets",
+                "ec2:DescribeTags",
+                "ec2:DescribeSecurityGroups",
+                "logs:CreateLogDelivery",
+                "logs:GetLogDelivery",
+                "logs:UpdateLogDelivery",
+                "logs:DeleteLogDelivery",
+                "logs:ListLogDeliveries",
+                "tag:GetResources"
             ],
             "Resource": "*"
         }
