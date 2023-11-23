@@ -1,0 +1,15 @@
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: rabbitmq-endpoint-reader
+  labels:
+    app.kubernetes.io/name: rabbitmq
+    app.kubernetes.io/instance: rabbitmq
+rules:
+  - apiGroups: [""]
+    resources: ["endpoints"]
+    verbs: ["get"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create"]

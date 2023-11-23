@@ -154,6 +154,7 @@ module "eks_blueprints_addons" {
       name  = "clusterVpcId"
       value = module.vpc.vpc_id
     }]
+    chart_version = "v1.0.1"
   }
 
   enable_karpenter                           = true
