@@ -10,5 +10,5 @@ spec:
   gatewayClassName: amazon-vpc-lattice
   listeners:
   - name: http
-    protocol: TCP
+    protocol: HTTP
     port: 80

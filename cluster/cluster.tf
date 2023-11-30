@@ -146,17 +146,6 @@ module "eks_blueprints_addons" {
     }
   }
 
-  enable_aws_gateway_api_controller = true
-  aws_gateway_api_controller = {
-    repository_username = data.aws_ecrpublic_authorization_token.token.user_name
-    repository_password = data.aws_ecrpublic_authorization_token.token.password
-    set = [{
-      name  = "clusterVpcId"
-      value = module.vpc.vpc_id
-    }]
-    chart_version = "v1.0.1"
-  }
-
   enable_karpenter                           = true
   karpenter_enable_spot_termination          = true
   karpenter_enable_instance_profile_creation = true

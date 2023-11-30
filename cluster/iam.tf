@@ -125,7 +125,7 @@ module "iam_assumable_role_lattice" {
   role_name                     = "${local.eks_cluster_id}-lattice"
   provider_url                  = local.eks_oidc_issuer_url
   role_policy_arns              = [aws_iam_policy.lattice.arn]
-  oidc_fully_qualified_subjects = ["system:serviceaccount:gateway-api-controller:gateway-api-controller"]
+  oidc_fully_qualified_subjects = ["system:serviceaccount:${var.lattice_service_account_name}:${var.lattice_service_account_name}"]
 
   tags = local.tags
 }

@@ -35,3 +35,4 @@ terraform.rc
 
 .DS_Store
 .terraform*
+test
