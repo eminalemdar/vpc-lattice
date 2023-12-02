@@ -141,13 +141,13 @@ kubectl apply -f vpc-lattice/controller/checkout-route.yaml
 kubectl apply -f vpc-lattice/controller/target-group-policy.yaml
 ```
 
-This creation of the associated resources may take 2-3 minutes, run the following command to wait for it to complete:
+This creation of the associated resources may take 2-3 minutes, you can run the following command to wait for it to complete:
 
 ```bash
 kubectl wait --for=jsonpath='{.status.parents[-1:].conditions[-1:].reason}'=ResolvedRefs httproute/checkoutroute -n checkout
 ```
 
-Once completed you will find the `HTTPRoute`'s DNS name from `HTTPRoute` status.
+Once completed, you will find the `HTTPRoute`'s DNS name from `HTTPRoute` status.
 
 ```bash
 kubectl describe httproute checkoutroute -n checkout
