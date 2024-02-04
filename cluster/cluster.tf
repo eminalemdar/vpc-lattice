@@ -20,7 +20,7 @@ locals {
 
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "~> 19.17"
+  version = "~> 20.0"
 
   cluster_name                   = var.cluster_name
   cluster_version                = var.cluster_version
@@ -72,7 +72,7 @@ module "eks" {
 
 module "eks_blueprints_addons" {
   source  = "aws-ia/eks-blueprints-addons/aws"
-  version = ">= 1.12.0"
+  version = ">= 1.14.0"
 
   cluster_name      = module.eks.cluster_name
   cluster_endpoint  = module.eks.cluster_endpoint
@@ -167,7 +167,7 @@ module "eks_blueprints_addons" {
 
 module "ebs_csi_driver_irsa" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
-  version = "~> 5.20"
+  version = "~> 5.34"
 
   role_name_prefix = "${module.eks.cluster_name}-ebs-csi-driver-"
 
