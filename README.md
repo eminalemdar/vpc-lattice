@@ -29,7 +29,7 @@ The resources in this repository deploys **The AWS Gateway API Controller** and 
 If you don't have an Amazon EKS cluster, you can use the Terraform code in [cluster folder](./cluster/) to deploy one. This Terraform code creates the following resources:
 
 - A VPC with three private and three public subnets,
-- An Amazon EKS Cluster with Kubernetes version set to 1.28 and a Managed Node Group with one instance,
+- An Amazon EKS Cluster with Kubernetes version set to 1.29 and a Managed Node Group with one instance,
 - Some EKS and Custom Addons such as [Karpenter](karpenter.sh) and [External Secrets Operator](https://external-secrets.io/latest/),
 - Required IAM Roles for Addons and the AWS Gateway API Controller.
 
