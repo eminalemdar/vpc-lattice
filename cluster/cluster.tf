@@ -33,18 +33,6 @@ module "eks" {
   create_cluster_security_group = false
   create_node_security_group    = false
 
-  manage_aws_auth_configmap = true
-  aws_auth_roles = [
-    {
-      rolearn  = module.eks_blueprints_addons.karpenter.node_iam_role_arn
-      username = "system:node:{{EC2PrivateDNSName}}"
-      groups = [
-        "system:bootstrappers",
-        "system:nodes",
-      ]
-    },
-  ]
-
   eks_managed_node_groups = {
     initial = {
       instance_types        = ["m5.xlarge"]
@@ -65,6 +53,28 @@ module "eks" {
     "karpenter.sh/discovery" = local.name
   })
 }
+
+#---------------------------------------------------------------
+# Cluster Auth
+#---------------------------------------------------------------
+
+module "auth" {
+  source                    = "terraform-aws-modules/eks/aws//modules/aws-auth"
+  version                   = "~> 20.0"
+  manage_aws_auth_configmap = true
+  aws_auth_roles = [
+    {
+      rolearn  = module.eks_blueprints_addons.karpenter.node_iam_role_arn
+      username = "system:node:{{EC2PrivateDNSName}}"
+      groups = [
+        "system:bootstrappers",
+        "system:nodes",
+      ]
+    },
+  ]
+}
+
+
 
 #---------------------------------------------------------------
 # Cluster Addons
