@@ -7,7 +7,7 @@ AWS Gateway API Controller.
 '
 
 declare AWS_REGION="eu-west-1"
-declare CLUSTER_NAME="eks-cluster"
+declare CLUSTER_NAME="eks"
 
 install(){
     # Configure Authentication for the Kubernetes Cluster
@@ -38,7 +38,7 @@ install(){
     PREFIX_LIST_ID=$(aws ec2 describe-managed-prefix-lists --query "PrefixLists[?PrefixListName=="\'com.amazonaws.${AWS_REGION}.vpc-lattice\'"].PrefixListId" | jq -r '.[]')
     aws ec2 authorize-security-group-ingress --group-id ${CLUSTER_SG} --ip-permissions "PrefixListIds=[{PrefixListId=${PREFIX_LIST_ID}}],IpProtocol=-1"
 
-    IAM_ROLE="eks-cluster-lattice"
+    IAM_ROLE="eks-lattice"
     IAM_ROLE_ARN=$(aws iam get-role --role-name=${IAM_ROLE} --query Role.Arn --output text)
     NAMESPACE="gateway-api-controller"
     CHART_VERSION="1.0.0"

@@ -5,10 +5,10 @@ metadata:
   name: default
 spec:
   amiFamily: AL2 # Amazon Linux 2
-  role: "karpenter-eks-cluster"
+  role: "karpenter-eks"
   subnetSelectorTerms:
     - tags:
-        karpenter.sh/discovery: "eks-cluster"
+        karpenter.sh/discovery: "eks"
   securityGroupSelectorTerms:
     - tags:
-        karpenter.sh/discovery: "eks-cluster"
+        karpenter.sh/discovery: "eks"
