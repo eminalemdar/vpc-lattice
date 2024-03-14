@@ -22,9 +22,12 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
 
-  cluster_name                   = var.cluster_name
-  cluster_version                = var.cluster_version
-  cluster_endpoint_public_access = true
+  cluster_name                             = var.cluster_name
+  cluster_version                          = var.cluster_version
+  cluster_endpoint_public_access           = true
+  enable_cluster_creator_admin_permissions = true
+
+  cluster_enabled_log_types = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
 
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
@@ -35,7 +38,7 @@ module "eks" {
 
   eks_managed_node_groups = {
     initial = {
-      instance_types        = ["m5.xlarge"]
+      instance_types        = ["m5.large"]
       create_security_group = false
 
       subnet_ids = module.vpc.private_subnets
@@ -72,9 +75,15 @@ module "auth" {
       ]
     },
   ]
+  # You can optionally add IAM users to the aws-auth ConfigMap
+  aws_auth_users = [
+    {
+      userarn  = data.aws_caller_identity.current.arn
+      username = data.aws_caller_identity.current.user_id
+      groups   = ["system:masters"]
+    }
+  ]
 }
-
-
 
 #---------------------------------------------------------------
 # Cluster Addons
